@@ -356,8 +356,8 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:8px;line-he
 
 /* service area block (map + pin grid) */
 .svc-area{position:relative;background:var(--gray);overflow:hidden}
-.svc-area:before{content:"";position:absolute;inset:0 0 0 45%;background:linear-gradient(90deg,#F5F7FA 0%,rgba(245,247,250,.9) 35%,rgba(245,247,250,.92) 100%),url("https://images.unsplash.com/photo-1761418022097-621b807bea0f?w=1200&h=800&fit=crop&q=60&auto=format") center/cover no-repeat;opacity:.9;pointer-events:none}
-.sa-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.svc-area:before{content:"";position:absolute;inset:0 45% 0 0;background:linear-gradient(270deg,#F5F7FA 0%,rgba(245,247,250,.9) 35%,rgba(245,247,250,.92) 100%),url("https://images.unsplash.com/photo-1761418022097-621b807bea0f?w=1200&h=800&fit=crop&q=60&auto=format") center/cover no-repeat;opacity:.9;pointer-events:none}
+.sa-grid{position:relative;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,5vw,64px);align-items:center}
 .amap{position:relative;z-index:0;isolation:isolate;min-height:460px;height:100%;border-radius:var(--r);overflow:hidden;background:var(--navy);box-shadow:var(--sh-lg)}
 .amap .leaflet-tile-pane{filter:sepia(1) hue-rotate(180deg) saturate(2.4) brightness(1.05)}
 
@@ -378,6 +378,10 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:8px;line-he
 .sa-list li.cur a span{border-bottom:2px solid var(--orange)}
 @media (max-width:1000px){.sa-grid{grid-template-columns:1fr}.svc-area:before{inset:0}.amap{min-height:360px;order:2}}
 @media (max-width:600px){.sa-list{grid-template-columns:1fr 1fr;gap:10px 14px;font-size:.95rem}.amap{min-height:300px}.sa-txt .btn{width:100%}}
+
+.amap-img{margin:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-lg);border:6px solid #fff;background:#fff}
+.amap-img img{width:100%;height:auto;display:block}
+@media (max-width:1000px){.amap-img{order:2}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pensacolapestcontrolpros.com/#org","name":"Pensacola Pest Control Pros","url":"https://pensacolapestcontrolpros.com/","telephone":"+18500000000","areaServed":[{"@type":"City","name":"Pensacola, FL","sameAs":"https://en.wikipedia.org/wiki/Pensacola,_Florida"},{"@type":"Place","name":"Gulf Breeze, FL","sameAs":"https://en.wikipedia.org/wiki/Gulf_Breeze,_Florida"},{"@type":"Place","name":"Ferry Pass, FL","sameAs":"https://en.wikipedia.org/wiki/Ferry_Pass,_Florida"},{"@type":"Place","name":"Bellview, FL","sameAs":"https://en.wikipedia.org/wiki/Bellview,_Florida"},{"@type":"Place","name":"Warrington, FL","sameAs":"https://en.wikipedia.org/wiki/Warrington,_Florida"},{"@type":"Place","name":"Brent, FL","sameAs":"https://en.wikipedia.org/wiki/Brent,_Florida"},{"@type":"Place","name":"Ensley, FL","sameAs":"https://en.wikipedia.org/wiki/Ensley,_Florida"},{"@type":"Place","name":"West Pensacola, FL","sameAs":"https://en.wikipedia.org/wiki/West_Pensacola,_Florida"},{"@type":"Place","name":"Myrtle Grove, FL","sameAs":"https://en.wikipedia.org/wiki/Myrtle_Grove,_Florida"},{"@type":"Place","name":"Pace, FL","sameAs":"https://en.wikipedia.org/wiki/Pace,_Florida"},{"@type":"AdministrativeArea","name":"Escambia County, FL","sameAs":"https://en.wikipedia.org/wiki/Escambia_County,_Florida"},{"@type":"AdministrativeArea","name":"Santa Rosa County, FL","sameAs":"https://en.wikipedia.org/wiki/Santa_Rosa_County,_Florida"}]},{"@type":"WebSite","@id":"https://pensacolapestcontrolpros.com/#website","url":"https://pensacolapestcontrolpros.com/","name":"Pensacola Pest Control Pros","publisher":{"@id":"https://pensacolapestcontrolpros.com/#org"}},{"@type":"WebPage","@id":"https://pensacolapestcontrolpros.com/404/#webpage","url":"https://pensacolapestcontrolpros.com/404/","name":"Page Not Found | Pensacola Pest Control Pros","description":"Page not found.","isPartOf":{"@id":"https://pensacolapestcontrolpros.com/#website"},"breadcrumb":{"@id":"https://pensacolapestcontrolpros.com/404/#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://pensacolapestcontrolpros.com/404/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://pensacolapestcontrolpros.com/"},{"@type":"ListItem","position":2,"name":"Page Not Found","item":"https://pensacolapestcontrolpros.com/404/"}]}]}</script>
 </head>
@@ -450,17 +454,6 @@ footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:8px;line-he
 var els=document.querySelectorAll(".sec .wrap > *, .card, .scard, .faq details, .step");
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -6% 0px"});
 els.forEach(function(el,i){el.classList.add("rise");el.style.transitionDelay=((i%4)*60)+"ms";io.observe(el)});})();
-</script><script>
-(function(){var el=document.querySelector('.amap');if(!el)return;var done=false;
-function go(){if(done)return;done=true;var c=document.createElement('link');c.rel='stylesheet';c.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(c);
-var s=document.createElement('script');s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';s.onload=init;document.head.appendChild(s);}
-function init(){document.querySelectorAll('.amap').forEach(function(m){var pts=JSON.parse(m.getAttribute('data-pts'));
-var map=L.map(m,{scrollWheelZoom:false,zoomControl:true,attributionControl:true});
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'}).addTo(map);L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,pane:'overlayPane'}).addTo(map);
-var b=[];pts.forEach(function(p){var big=p.f;var ic=L.divIcon({className:'apin'+(big?' on':''),html:'<svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z"/><circle cx="12" cy="12" r="4.5"/></svg>',iconSize:big?[34,44]:[26,34],iconAnchor:big?[17,44]:[13,34]});
-L.marker([p.lat,p.lng],{icon:ic,title:p.n}).addTo(map).bindTooltip(p.n+', FL',{direction:'top',offset:[0,big?-40:-30]}).on('click',function(){location.href=p.u});b.push([p.lat,p.lng]);});
-map.fitBounds(b,{padding:[40,40]});});}
-if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect();}},{rootMargin:'300px'});io.observe(el);}else go();})();
 </script>
 </body>
 </html>
